@@ -23,7 +23,7 @@ namespace MorsodItalia.BL
             ListadeProductos = _contexto.Productos
             .Include("Categoria")
             .ToList();
-            return  ListadeProductos ;
+            return ListadeProductos;
         }
         public void GuardarProducto(Producto producto)
         {
