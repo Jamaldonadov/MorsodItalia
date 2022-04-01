@@ -1,0 +1,38 @@
+﻿@model MorsodItalia.BL.Producto
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>&iquest;Está seguro que desea "Eliminar" este Producto?</h3>
+<div>
+    @*<h4>Producto</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> @Html.DisplayNameFor(model => model.Descripcion) </dt>
+        <dd> @Html.DisplayFor(model => model.Descripcion) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.Categoria) </dt> 
+        <dd> @Html.DisplayFor(model => model.Categoria.Descripcion) </dd>
+        
+        <dt> @Html.DisplayNameFor(model => model.Precio) </dt>
+        <dd> @Html.DisplayFor(model => model.Precio) </dd>
+        
+        <dt> @Html.DisplayNameFor(model => model.UrlImagen) </dt>
+        <dd> <img src="@Model.UrlImagen" alt="@Model.Descripcion" style="width:64px; height:auto;" /> </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.Activo) </dt>
+        <dd> @Html.DisplayFor(model => model.Activo) </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la Lista", "Index")
+        </div>
+    }
+</div>
