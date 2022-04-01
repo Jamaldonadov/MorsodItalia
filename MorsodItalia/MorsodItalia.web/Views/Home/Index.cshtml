@@ -1,7 +1,82 @@
-﻿
+﻿@model List<MorsodItalia.BL.Producto>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Bienvenidos a MorsodItalia</h2>
 
+          
+
+
+     <div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+         <div class="container">
+             <div class="block-title text-center color-red"><h1>NUESTROS POSTRES DEL DIA</h1></div>
+             <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                         
+
+                         @foreach (var producto in Model
+                             .Where(r => r.Categoria.Descripcion == "Postre")
+                             .Take(3)
+                             .OrderBy(r => Guid.NewGuid())
+                             )
+
+                         {
+                             <div class="col-lg-7 col-md-4  col-sm-12 col-xs-12 ">
+                                 <div class="center-text mb-30">
+                                     <div class="offer-item">
+                                         <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="img-responsive">
+                                     </div>
+                                     <h5 class="mt-20">@producto.Descripcion</h5>
+                                     <h4 class="mt-5 color-primary"><b>L. @producto.Precio</b></h4>
+                                 </div><!--text-center-->
+                             </div><!-- col-md-3 -->
+                         }
+                     </div>
+                 </div>
+             </div>
+                 </div><!-- row-->
+             </div>
+
+
+
+             <div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+                 <div class="container">
+                     <h2 class="block-title text-center">
+                         Nuestro Menu
+                         <br><br />
+                     </h2>
+                     <div class="row">
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                             <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                          
+
+                                 @foreach (var producto in Model)
+                                 {
+                                 <div>
+                                     <div class="col-lg-8 col-md-3 col-sm-12 col-xs-2 ">
+                                         <div class="offer-item">
+                                             <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="" class="img-responsive">
+                                             <div>
+                                                 <h3>@producto.Descripcion</h3>
+                                                 
+                                             </div>
+                                             <span class="offer-price">@producto.Precio</span>
+                                         </div>
+                                     </div>
+                                     <!-- end col -->
+                                  
+                                   
+                                 
+                                 </div>
+                                 }
+                             </div>
+                                 
+                         </div>
+                         <!-- end tab-menu -->
+                     </div>
+                     <!-- end col -->
+                 </div>
+                 <!-- end row -->
+             </div>
+             <!-- end container -->
